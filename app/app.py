@@ -1,38 +1,36 @@
 from flask import Flask, render_template, request
-import pickle
 import numpy as np
+import joblib
 
-# Initialize Flask app
 app = Flask(__name__)
 
-# Load trained model
-model = pickle.load(open('model.pkl', 'rb'))
+# Load your trained model
+model = joblib.load("model.pkl")
 
 @app.route('/')
 def home():
-    return '''
-        <h2>Machine Learning Model Deployment</h2>
-        <form action="/predict" method="post">
-            <input type="text" name="feature1" placeholder="Feature 1" required><br>
-            <input type="text" name="feature2" placeholder="Feature 2" required><br>
-            <input type="text" name="feature3" placeholder="Feature 3" required><br>
-            <button type="submit">Predict</button>
-        </form>
-    '''
+    return render_template("index.html")
 
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
-        # Collect input data
-        features = [float(x) for x in request.form.values()]
-        data = np.array(features).reshape(1, -1)
+        # Get form values in correct order (Age, Height, Smoke, Gender, Caesarean)
+        age = float(request.form['Age'])
+        height = float(request.form['Height'])
+        smoke = float(request.form['Smoke'])
+        gender = float(request.form['Gender'])
+        caesarean = float(request.form['Caesarean'])
+
+        # Arrange features as numpy array
+        features = np.array([[age, height, smoke, gender, caesarean]])
 
         # Make prediction
-        prediction = model.predict(data)[0]
+        prediction = model.predict(features)[0]
 
-        return f"<h3>Prediction: {prediction}</h3><a href='/'>Go Back</a>"
+        return render_template("index.html", prediction=round(prediction, 2))
 
     except Exception as e:
-        return f"<h3>Error: {str(e)}</h3><a href='/'>Go Back</a>"
+        return render_template("index.html", prediction=f"Error: {e}")
 
-# Note: Do not include app.run() here (Render runs via run.py)
+if __name__ == '__main__':
+    app.run(debug=True)
