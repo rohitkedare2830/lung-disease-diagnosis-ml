@@ -3,8 +3,8 @@
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue)
 ![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-ML-orange)
-![License](https://img.shields.io/github/license/rohitkedare2830/lung-disease-diagnosis-ml-system)
-![Last Commit](https://img.shields.io/github/last-commit/rohitkedare2830/lung-disease-diagnosis-ml-system)
+![License](https://img.shields.io/github/license/rohitkedare2830/lung-disease-diagnosis-ml)
+![Last Commit](https://img.shields.io/github/last-commit/rohitkedare2830/lung-disease-diagnosis-ml)
 
 ---
 
@@ -42,6 +42,20 @@ The system showcases:
 
 ---
 
+📈 Evaluation Metrics
+
+- Accuracy
+- Precision
+- Recall
+- F1-score
+
+🔮 Future Enhancements
+
+- Deep learning model integration
+- API deployment using FastAPI
+- Dataset expansion
+- Model monitoring
+
 ## 🛠️ Setup
 
 ```bash
@@ -54,24 +68,16 @@ python predict.py
 
 cd lung-disease-diagnosis-ml-system
 pip install -r requirements.txt
+```
 
+---
 
-📈 Evaluation Metrics
+👨‍💻 Author
 
-Accuracy
+Rohit Kedare
 
-Precision
+📧 Email: rohitkedare12@gmail.com
+🔗 LinkedIn: https://www.linkedin.com/in/rohit-kedare-a552a11b4
 
-Recall
+⭐ Feel free to explore my projects or reach out for collaboration and opportunities.
 
-F1-score
-
-🔮 Future Enhancements
-
-Deep learning model integration
-
-API deployment using FastAPI
-
-Dataset expansion
-
-Model monitoring
